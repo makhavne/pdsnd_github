@@ -1,15 +1,19 @@
 ### Date created
-Include the date you created this project and README file.
+July 15, 2019
 
 ### Project Title
-Replace the Project Title
+Explore US Bikeshare Data
 
 ### Description
-Describe what your project is about and what it does
+This project helps explore data related to bike share systems for 3 major cities (Chicago, NY, Washington) in the United States. It accepts raw input from user and presents descriptive statistics for data filtered based on user inputs.
 
 ### Files used
-Include the files used
+* bikeshare.py
+* chicago.csv
+* new_york_city.csv
+* washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+1. Udacity Nanodegree course
+2. [Python](https://docs.python.org/2/reference/index.html)
+3. [Panda](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
