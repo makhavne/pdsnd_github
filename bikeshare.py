@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import time
 
+SEPARATOR = '-' * 40
+
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
@@ -60,7 +62,7 @@ def get_filters():
     print("For all months" if month.lower() == 'all' else ("Filtered by month - " + month.lower()))
     print("For all days" if day.lower() == 'all' else ("Filtered by day of week - " + day.lower()))
 
-    print('-' * 40)
+    print(SEPARATOR)
     return city.lower(), month.lower(), day
 
 
@@ -99,7 +101,7 @@ def load_data(city, month, day):
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
 
-    print('-' * 40)
+    print(SEPARATOR)
     print(df.head(5))
     return df
 
@@ -120,7 +122,7 @@ def time_stats(df):
     print("The most common start hour = {}".format(df['hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def station_stats(df):
@@ -143,7 +145,7 @@ def station_stats(df):
     # print(df['combined'].value_counts().index[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def trip_duration_stats(df):
@@ -159,7 +161,7 @@ def trip_duration_stats(df):
     print("Mean travel time = {}".format(df['Trip Duration'].mean()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def user_stats(df):
@@ -190,7 +192,7 @@ def user_stats(df):
         print("\nNo data for birth year in selected dataset")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def main():
