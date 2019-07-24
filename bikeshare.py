@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import time
 
+SEPARATOR = '-' * 40
+
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
@@ -25,31 +27,34 @@ def get_filters():
             "\nInput {} was invalid. Please re-enter city - Chicago, New York City, or Washington?\n".format(city))
 
     # get user input for month (all, january, february, ... , june)
-    timeFilterList = ["month", "day", "both", "none"]
-    timeFilter = input(
+    time_filter_list = ["month", "day", "both", "none"]
+    time_filter = input(
         "\nWould you like to filter the data by month, day, both or not at all? (Enter none for no time filter)\n")
-    while timeFilter.lower() not in timeFilterList:
-        timeFilter = input(
-            "\nInput {} was invalid. Would you like to filter the data by month, day, both or not at all? (Enter none for no time filter)\n".format(
-                timeFilter))
+    while time_filter.lower() not in time_filter_list:
+        time_filter = input(
+            "\nInput {} was invalid. Would you like to filter the data by month, day, both or not at all? (Enter none "
+            "for no time filter)\n".format(
+                time_filter))
 
-    if timeFilter.lower() == "both" or timeFilter.lower() == "month":
-        monthList = ["january", "february", "march", "april", "may", "june"]
+    if time_filter.lower() == "both" or time_filter.lower() == "month":
+        month_list = ["january", "february", "march", "april", "may", "june"]
         month = input("\nWhich month? January, February, March, April, May, or June?\n")
-        while month.lower() not in monthList:
+        while month.lower() not in month_list:
             month = input(
-                "\nInput {} was invalid. Please re-enter month as January, February, March, April, May, or June?\n".format(
+                "\nInput {} was invalid. "
+                "Please re-enter month as January, February, March, April, May, or June?\n".format(
                     month))
     else:
         month = "all"
 
-    if timeFilter.lower() == "both" or timeFilter.lower() == "day":
-        dayRaw = input("\nWhich day? Please enter response as integer (e.g.: 1 = Monday)\n")
-        while not dayRaw.isdigit() or (int(dayRaw) < 1 or int(dayRaw) > 7):
-            dayRaw = input(
-                "\nInput {} was invalid. Please re-enter day as integer (e.g.: 1 = Monday ... 7 = Sunday)\n".format(
-                    dayRaw))
-        day = calendar.day_name[int(dayRaw) - 1]
+    if time_filter.lower() == "both" or time_filter.lower() == "day":
+        day_raw = input("\nWhich day? Please enter response as integer (e.g.: 1 = Monday)\n")
+        while not day_raw.isdigit() or (int(day_raw) < 1 or int(day_raw) > 7):
+            day_raw = input(
+                "\nInput {} was invalid. "
+                "Please re-enter day as integer (e.g.: 1 = Monday ... 7 = Sunday)\n".format(
+                    day_raw))
+        day = calendar.day_name[int(day_raw) - 1]
     else:
         day = "all"
 
@@ -57,7 +62,7 @@ def get_filters():
     print("For all months" if month.lower() == 'all' else ("Filtered by month - " + month.lower()))
     print("For all days" if day.lower() == 'all' else ("Filtered by day of week - " + day.lower()))
 
-    print('-' * 40)
+    print(SEPARATOR)
     return city.lower(), month.lower(), day
 
 
@@ -96,7 +101,7 @@ def load_data(city, month, day):
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
 
-    print('-' * 40)
+    print(SEPARATOR)
     print(df.head(5))
     return df
 
@@ -117,7 +122,7 @@ def time_stats(df):
     print("The most common start hour = {}".format(df['hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def station_stats(df):
@@ -140,7 +145,7 @@ def station_stats(df):
     # print(df['combined'].value_counts().index[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def trip_duration_stats(df):
@@ -156,7 +161,7 @@ def trip_duration_stats(df):
     print("Mean travel time = {}".format(df['Trip Duration'].mean()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def user_stats(df):
@@ -187,7 +192,7 @@ def user_stats(df):
         print("\nNo data for birth year in selected dataset")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+    print(SEPARATOR)
 
 
 def main():
