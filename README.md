@@ -13,13 +13,13 @@ Some of the statistics included are:
 3. Trip duration
 4. User info
 
-User is also given an option to view filtered raw data 5 rows at a time :+1: 
+User is also given an option to view filtered raw data 5 rows at a time :+1:
 
 ### Files used
-* bikeshare.py
-* chicago.csv
-* new_york_city.csv
-* washington.csv
+* bikeshare.py - main script file to run
+* chicago.csv - raw data, excluded from version control
+* new_york_city.csv - raw data, excluded from version control
+* washington.csv - raw data, excluded from version control
 
 ### Credits
 1. Udacity Nanodegree course
