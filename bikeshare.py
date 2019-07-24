@@ -30,7 +30,8 @@ def get_filters():
         "\nWould you like to filter the data by month, day, both or not at all? (Enter none for no time filter)\n")
     while timeFilter.lower() not in timeFilterList:
         timeFilter = input(
-            "\nInput {} was invalid. Would you like to filter the data by month, day, both or not at all? (Enter none for no time filter)\n".format(
+            "\nInput {} was invalid. Would you like to filter the data by month, day, both or not at all? (Enter none "
+            "for no time filter)\n".format(
                 timeFilter))
 
     if timeFilter.lower() == "both" or timeFilter.lower() == "month":
@@ -38,7 +39,8 @@ def get_filters():
         month = input("\nWhich month? January, February, March, April, May, or June?\n")
         while month.lower() not in monthList:
             month = input(
-                "\nInput {} was invalid. Please re-enter month as January, February, March, April, May, or June?\n".format(
+                "\nInput {} was invalid. "
+                "Please re-enter month as January, February, March, April, May, or June?\n".format(
                     month))
     else:
         month = "all"
@@ -47,7 +49,8 @@ def get_filters():
         dayRaw = input("\nWhich day? Please enter response as integer (e.g.: 1 = Monday)\n")
         while not dayRaw.isdigit() or (int(dayRaw) < 1 or int(dayRaw) > 7):
             dayRaw = input(
-                "\nInput {} was invalid. Please re-enter day as integer (e.g.: 1 = Monday ... 7 = Sunday)\n".format(
+                "\nInput {} was invalid. "
+                "Please re-enter day as integer (e.g.: 1 = Monday ... 7 = Sunday)\n".format(
                     dayRaw))
         day = calendar.day_name[int(dayRaw) - 1]
     else:
